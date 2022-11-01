@@ -9,3 +9,7 @@ Important Features:
 3) Django Admin - The use of Django and its own approach to relational databases allows for an admin page to edit information.
 4) Colouration - Colours are used to signify importance at a glance.
 5) Editability - Each task is able to be asynchronously marked as complete, edited or even deleted, offering the versatility needed for real use.
+
+<br><br><br><br>
+Credits:<br>
+Full credit and absolute respect to the photographers who took the free images on Pexels. None of these images (in /media/images) are mine nor do I claim them to be.
