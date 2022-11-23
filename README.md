@@ -23,4 +23,7 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-I’m currently working on HyderabadWithHeart
+I’m currently working on HyderabadWithHeart. 
+
+
+I don't update this page immediately, or with all my work. If you wish to see more, contact me.
