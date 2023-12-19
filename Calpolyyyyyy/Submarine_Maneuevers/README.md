@@ -1,5 +1,6 @@
 # Submarine Maneuevers
 #### P5JS Online Editor Link:  (https://editor.p5js.org/Submarine123/full/s6NzYAwOI) <br><br>
+by Pranav Dumpa, Dovydas Vabalas, Beck Thomas, Joaquin Barrazza, Andrew Lamb
 <div align="center"> <h3>Description:</h3></div>
 This project is a game created using the P5.JS framework for JavaScript. It features that seeks to dive downwards through an endless cave with the goal to achieve the highest score possible.
 
