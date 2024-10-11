@@ -1,0 +1,18 @@
+#regform {
+    width: 100%;
+    text-align: center;
+}
+
+.form-control {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+

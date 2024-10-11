@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<div class="try">
+<html lang="en" class="all">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <head>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+
+        <script>
+            function onSubmit(token) {
+            document.getElementById("regform").submit();
+            }
+        </script>
+        <title>{% block title %}Taskey{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'styles.css' %}" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    </head>
+    <body id="masterbody">
+
+        <nav class="navbar navbar-expand-lg" id="topnav">
+            <span id="Taskey"><h2>Taskey &nbsp;&nbsp;</h2></span>
+          
+            <div>
+              <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link auth" href=""><strong>{{ user.username }}</strong></a>
+                    </li>
+                    <br><br>
+                    <li class="nav-item">
+                        <a class="nav-link auth" href="{% url 'index' %}">Active Tasks</a>
+                    </li>
+                    <li>
+                        <a class="nav-link auth" href="{% url 'newtask' %}">Create Task</a>
+                    </li>
+                    <li>
+                        <a class="nav-link auth" href="{% url 'complete' %}">Task History</a>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link auth" href="{% url 'logout' %}" style="position:absolute; right:5%;">Log Out</a>
+                    </li>
+                    <li>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                          </label>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link else" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link else" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <script>
+            const mode = document.getElementById("mode");
+            const body = document.getElementById("masterbody");
+            const html = document.getElementById("all");
+            const topnav = document.getElementById("topnav");
+            const Taskr = document.getElementById("Taskr");
+            
+            mode.addEventListener("click", () => {
+                body.setAttribute("class","bg-dark")
+                topnav.setAttribute("class","navbar navbar-expand-lg navbar-dark")
+                Taskr.setAttribute("class","text-warning")
+            })
+        </script>
+        <style>
+            /* The switch - the box around the slider */
+            .switch {
+            position: absolute;
+            display: inline-block;
+            width: 30px;
+            height: 17px;
+            right: 12%;
+            top:30%;  
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            }
+
+            /* The slider */
+            .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            .slider:before {
+            position: absolute;
+            content: "";
+            height: 10px;
+            width: 10px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            input:checked + .slider {
+            background-color: black;
+            }
+
+            input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+            -webkit-transform: translateX(13px);
+            -ms-transform: translateX(13px);
+            transform: translateX(13px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+            border-radius: 34px;
+            }
+
+            .slider.round:before {
+            border-radius: 50%;
+            }
+        </style>
+    </body>
+</html>
+</div>

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 style="text-align:center">New Task</h1>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'newtask' %}">
+        {% csrf_token %}
+        <div class="form-group newform" style="text-align:center">
+            <textarea class="form-control form-control-lg textarea" id="newtask" name="newtask"></textarea><br><br>
+            <div class="mb-3 col-sm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="image">Add an image if you think it'll help:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="image" type="file" accept="image/png image/jpeg image/gif" id="image"></div><br><br>
+            <select name="status" id="stat">
+                <option value="Normal">Normal</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Time">Time-Bound</option>
+                <option value="Least">Least Concern</option>
+            </select><br><br>
+            <div id="reappear" style="display:none;"><input type="time" name="time" id="timer">
+            <label for="timer">Select deadline time</label><br>
+            <input type="date" name="date" id="dater">
+            <label for="dater">Select deadline date</label></div><br><br>
+            <button class="btn btn-dark form-control" type="submit" data-callback='onSubmit' data-action='submit' data-sitekey = '6LdKsFcgAAAAAGk6muxjkxgr2PgrkW33s776F865' id="newtask submit">Submit</button>
+        </div>
+    </form>
+    
+
+    <style>
+        .newform {
+            width: 75%;
+            margin:auto;
+        }
+    </style>
+    <script>
+        newtask = document.getElementById("newtask submit")
+        newtask.addEventListener("click", () => {
+            post = document.getElementById("newtask").value;
+            console.log(post);
+            })
+        stat = document.getElementById("stat")
+        const reappear  = document.getElementById("reappear")
+        const timer = document.getElementById("timer")
+        const dater = document.getElementById("dater")
+        stat.addEventListener('change', (event) => {
+            current = stat.value
+            //console.log("entered")
+            if (current == "Time"){
+                reappear.style.display = "block";
+            }
+            if (current == "Normal" || current == "Urgent") {
+                reappear.style.display = "none";
+                timer.value= ""
+                dater.value= ""
+                console.log(timer,dater)
+            }
+        })
+        console.log("newtask")
+    </script>
+    <style>
+    body {
+    background-image: url('/media/images/pexels-breakingpic-3243.jpg');
+    background-size: 100% 135%;
+    }
+
+    .auth {
+        color: white;
+    }
+    </style>
+{% endblock %}
